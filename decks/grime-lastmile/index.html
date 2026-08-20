@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Last Mile Studios × GRIME — Commerce Build + Growth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0d0f;
+      --bg-elevated: #14161a;
+      --bg-panel: #1a1d23;
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #f2f0ea;
+      --muted: #9a968c;
+      --soft: #c4bfb4;
+      --accent: #e8ff47;
+      --accent-dim: rgba(232, 255, 71, 0.14);
+      --warm: #ff6b4a;
+      --slide-w: 1280px;
+      --slide-h: 720px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: #050506;
+      color: var(--text);
+      font-family: "Instrument Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .deck-chrome {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 22px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: linear-gradient(to bottom, rgba(5,5,6,0.92), transparent);
+      pointer-events: none;
+    }
+
+    .deck-chrome strong { color: var(--soft); font-weight: 600; }
+
+    .stage {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 64px 24px 88px;
+    }
+
+    .slides {
+      width: min(100%, var(--slide-w));
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .slide {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background:
+        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(232, 255, 71, 0.07), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 0% 100%, rgba(255, 107, 74, 0.06), transparent 50%),
+        linear-gradient(160deg, #12141a 0%, var(--bg) 45%, #0a0b0d 100%);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      padding: 56px 64px;
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .slide > * { position: relative; z-index: 1; }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow.muted { color: var(--muted); }
+
+    h1, h2, .display {
+      font-family: Syne, sans-serif;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6.2vw, 78px);
+      max-width: 11ch;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4.6vw, 56px);
+      max-width: 16ch;
+      margin-bottom: 18px;
+    }
+
+    .lede {
+      font-size: 20px;
+      line-height: 1.45;
+      color: var(--soft);
+      max-width: 36ch;
+      font-weight: 450;
+    }
+
+    .lede.wide { max-width: 48ch; }
+
+    .footer-bar {
+      margin-top: auto;
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer-bar .note { color: var(--soft); letter-spacing: 0.04em; text-transform: none; font-size: 13px; max-width: 52ch; line-height: 1.4; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .stack { display: flex; flex-direction: column; gap: 18px; }
+    .row { display: grid; gap: 20px; }
+    .row.three { grid-template-columns: repeat(3, 1fr); }
+    .row.two { grid-template-columns: 1fr 1fr; }
+    .row.split { grid-template-columns: 1.15fr 0.85fr; align-items: stretch; flex: 1; }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      padding: 22px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .card h3 {
+      font-family: Syne, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .card ul, .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card li, .list li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--soft);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .card li::before, .list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+    }
+
+    .num {
+      font-family: Syne, sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .cover-meta {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cover-bottom {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+    }
+
+    .brand-lockup {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .brand-lockup span { color: var(--muted); }
+
+    .price-block {
+      background: var(--accent-dim);
+      border: 1px solid rgba(232, 255, 71, 0.28);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .price-block .label {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .price-block .amount {
+      font-family: Syne, sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .price-block .desc {
+      color: var(--soft);
+      font-size: 15px;
+      line-height: 1.45;
+      max-width: 28ch;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: Syne, sans-serif;
+      font-size: 36px;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .work-card .tag {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .nav {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 30;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px;
+      background: rgba(12, 13, 15, 0.85);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      padding: 8px 12px;
+      font: inherit;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .nav button:hover { border-color: rgba(232,255,71,0.45); color: var(--accent); }
+    .nav .count { color: var(--muted); font-size: 12px; padding: 0 8px; min-width: 64px; text-align: center; }
+
+    .slide.focus-mode { outline: 1px solid rgba(232,255,71,0.35); }
+
+    @media (max-width: 900px) {
+      .slide { padding: 36px 28px; aspect-ratio: auto; min-height: 640px; }
+      .row.three, .row.two, .row.split, .stat-row { grid-template-columns: 1fr; }
+      h1 { font-size: 48px; }
+      h2 { font-size: 36px; }
+      .cover-bottom { flex-direction: column; align-items: start; }
+    }
+
+    @page {
+      size: 13.333in 7.5in;
+      margin: 0;
+    }
+
+    @media print {
+      .deck-chrome, .nav { display: none !important; }
+      html, body { background: #0c0d0f !important; margin: 0; padding: 0; }
+      .stage { padding: 0; min-height: auto; display: block; }
+      .slides { width: auto; gap: 0; }
+      .slide {
+        width: 13.333in;
+        height: 7.5in;
+        aspect-ratio: auto;
+        break-after: page;
+        page-break-after: always;
+        break-inside: avoid;
+        border: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .slide:last-child { break-after: auto; page-break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck-chrome">
+    <div><strong>Last Mile Studios</strong> × GRIME</div>
+    <div>Commerce build + growth scope</div>
+  </div>
+
+  <div class="stage">
+    <div class="slides" id="slides">
+
+      <!-- 01 Cover -->
+      <section class="slide" data-title="Cover">
+        <p class="eyebrow">Commerce build + growth scope</p>
+        <h1>Build one connected commerce engine.</h1>
+        <p class="lede" style="margin-top: 24px;">Shopify first. Amazon alongside it. Target when the proof is there. App later.</p>
+        <div class="cover-meta">
+          <span class="pill">One build partner</span>
+          <span class="pill">One data picture</span>
+          <span class="pill">One growth rhythm</span>
+        </div>
+        <div class="cover-bottom">
+          <div class="brand-lockup">Last Mile Studios <span>×</span> GRIME™</div>
+          <div style="color: var(--muted); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Confidential · Proposal</div>
+        </div>
+      </section>
+
+      <!-- 02 Principle -->
+      <section class="slide" data-title="Principle">
+        <p class="eyebrow">The principle</p>
+        <h2>Not three disconnected agencies.</h2>
+        <p class="lede wide">GRIME should not have one team building Shopify, another building Amazon, and a third lining up marketing afterward.</p>
+        <div class="row three" style="margin-top: 36px; flex: 1;">
+          <article class="card">
+            <div class="num">01</div>
+            <h3>One brand world</h3>
+            <p>Visual system, product hierarchy, claims, and promotions stay consistent across every channel.</p>
+          </article>
+          <article class="card">
+            <div class="num">02</div>
+            <h3>One commercial view</h3>
+            <p>Shopify and Amazon measured together — traffic, conversion, CAC, repeat purchase, product performance.</p>
+          </article>
+          <article class="card">
+            <div class="num">03</div>
+            <h3>One growth rhythm</h3>
+            <p>Campaigns, launches, and offers move together instead of being rebuilt channel by channel.</p>
+          </article>
+        </div>
+        <div class="footer-bar">
+          <span class="note">Last Mile is the commerce and growth partner — not the creative agency.</span>
+          <span>02</span>
+        </div>
+      </section>
+
+      <!-- 03 Working together -->
+      <section class="slide" data-title="Working together">
+        <p class="eyebrow">Working together</p>
+        <h2>Who owns what.</h2>
+        <div class="row two" style="margin-top: 12px; flex: 1;">
+          <article class="card" style="background: var(--accent-dim); border-color: rgba(232,255,71,0.22);">
+            <div class="num">Last Mile owns</div>
+            <ul>
+              <li>Commerce architecture and build</li>
+              <li>Shopify and Amazon implementation</li>
+              <li>Measurement, conversion, and ongoing optimisation</li>
+              <li>Paid-media deployment across agreed platforms</li>
+              <li>Channel coordination so the experience stays connected</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="num" style="color: var(--soft);">GRIME supplies</div>
+            <ul>
+              <li>Approved brand identity, photography, video, renders</li>
+              <li>UGC and campaign creative</li>
+              <li>Product claims and legal approvals</li>
+              <li>Product data and required brand assets</li>
+            </ul>
+          </article>
+        </div>
+        <div class="footer-bar">
+          <span class="note">Creative stays with GRIME. Commerce and growth stay with Last Mile.</span>
+          <span>03</span>
+        </div>
+      </section>
+
+      <!-- 04 Shopify -->
+      <section class="slide" data-title="Shopify">
+        <p class="eyebrow">Phase 1 — Build · Shopify</p>
+        <h2>A GRIME storefront — not a template left behind.</h2>
+        <div class="row split" style="margin-top: 8px;">
+          <div>
+            <ul class="list">
+              <li>Custom Shopify Online Store 2.0 build aligned to the GRIME system</li>
+              <li>Parent-first buying journey — cool, graphic, made for boys</li>
+              <li>Modular homepage and campaign sections for weekly drops</li>
+              <li>Custom PDPs, collections, routines / bundles, GRIME 101 / FAQ</li>
+              <li>Subscriptions and reviews connected (Recharge + reviews app)</li>
+              <li>Email / SMS connected; SEO, privacy, mobile performance, launch QA</li>
+            </ul>
+          </div>
+          <aside class="card" style="justify-content: end;">
+            <div class="num">Outcome</div>
+            <h3>The storefront GRIME lives in</h3>
+            <p>Built to feel alive and launch-ready — architecture that can grow into Plus, Target, and app later without a rebuild.</p>
+          </aside>
+        </div>
+        <div class="footer-bar">
+          <span>Shopify</span>
+          <span>04</span>
+        </div>
+      </section>
+
+      <!-- 05 Amazon -->
+      <section class="slide" data-title="Amazon">
+        <p class="eyebrow">Phase 1 — Build · Amazon</p>
+        <h2>Amazon, launched as GRIME — not a separate brand.</h2>
+        <div class="row split" style="margin-top: 8px;">
+          <div>
+            <ul class="list">
+              <li>Account / Brand Registry readiness and channel architecture</li>
+              <li>Brand Store structure and build from approved assets</li>
+              <li>Product listings, variation structure, titles, bullets, search setup</li>
+              <li>A+ / Brand Story modules for hero ASINs</li>
+              <li>Marketplace merchandising, measurement, and launch setup</li>
+            </ul>
+          </div>
+          <aside class="card" style="justify-content: end;">
+            <div class="num">Outcome</div>
+            <h3>Two live storefronts</h3>
+            <p>One brand and one commercial foundation — Shopify and Amazon ready to take demand together.</p>
+          </aside>
+        </div>
+        <div class="footer-bar">
+          <span>Amazon</span>
+          <span>05</span>
+        </div>
+      </section>
+
+      <!-- 06 Grow -->
+      <section class="slide" data-title="Grow">
+        <p class="eyebrow">Phase 2 — Grow</p>
+        <h2>Manage + optimise after launch.</h2>
+        <p class="lede wide" style="margin-bottom: 24px;">The build is only the start. The value comes from learning what converts and changing the system around it.</p>
+        <div class="row three" style="flex: 1;">
+          <article class="card">
+            <div class="num">Shopify</div>
+            <h3>Site + conversion</h3>
+            <ul>
+              <li>Maintenance and technical support</li>
+              <li>CRO and merchandising changes</li>
+              <li>Landing pages, offers, launches</li>
+              <li>Analytics and reporting</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="num">Amazon</div>
+            <h3>Catalogue + market</h3>
+            <ul>
+              <li>Listing health and catalogue ops</li>
+              <li>Search and conversion optimisation</li>
+              <li>Promotions and content updates</li>
+              <li>Marketplace reporting</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="num">Paid growth</div>
+            <h3>Deploy + learn</h3>
+            <ul>
+              <li>Amazon, Meta, and Google as agreed</li>
+              <li>One acquisition picture across channels</li>
+              <li>Optimised to commercial outcomes</li>
+              <li>GRIME owns creative; we deploy</li>
+            </ul>
+          </article>
+        </div>
+        <div class="footer-bar">
+          <span class="note">Measure. Learn. Change. Repeat.</span>
+          <span>06</span>
+        </div>
+      </section>
+
+      <!-- 07 Expand -->
+      <section class="slide" data-title="Expand">
+        <p class="eyebrow">Later — Expand</p>
+        <h2>Add channels when the engine has proof.</h2>
+        <div class="row two" style="margin-top: 12px; flex: 1;">
+          <article class="card">
+            <div class="num">Target</div>
+            <h3>When online proof is there</h3>
+            <ul>
+              <li>Target / Target Plus onboarding</li>
+              <li>Catalogue, PDP, and merchandising setup</li>
+              <li>Brand content in the Target environment</li>
+              <li>Tracking, reporting, retail-media readiness</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="num">App</div>
+            <h3>When behaviour earns it</h3>
+            <ul>
+              <li>Account, subscription, and reorder</li>
+              <li>Loyalty and community</li>
+              <li>Education, routines, and retention</li>
+              <li>Gus-led guidance where appropriate</li>
+            </ul>
+          </article>
+        </div>
+        <div class="footer-bar">
+          <span class="note">Build what GRIME needs now. Add complexity only when the business has earned it.</span>
+          <span>07</span>
+        </div>
+      </section>
+
+      <!-- 08 Why Last Mile (no competitors) -->
+      <section class="slide" data-title="Why Last Mile">
+        <p class="eyebrow">Why Last Mile</p>
+        <h2>One partner. Fewer handoffs. Faster decisions.</h2>
+        <div class="row two" style="margin-top: 8px; flex: 1;">
+          <article class="card">
+            <h3>Shopify and Amazon, built together</h3>
+            <p>Storefront, product story, promotions, data, and paid activity designed as one system — not stitched after the fact.</p>
+          </article>
+          <article class="card">
+            <h3>The same team stays after launch</h3>
+            <p>Management keeps the system flexible. Paid spend ramps as the evidence supports it.</p>
+          </article>
+          <article class="card">
+            <h3>Built by people who’ve shipped</h3>
+            <p>Ecommerce from the brand side, not just the agency side — practical, fast, commercially minded.</p>
+          </article>
+          <article class="card">
+            <h3>One relationship for the founder</h3>
+            <p>Not separate developers, Amazon specialists, media, and tech teams to coordinate every week.</p>
+          </article>
+        </div>
+        <div class="footer-bar">
+          <span class="note">Flexible enough to move with GRIME — without a large-agency operating model.</span>
+          <span>08</span>
+        </div>
+      </section>
+
+      <!-- 09 Work -->
+      <section class="slide" data-title="Selected work">
+        <p class="eyebrow">Selected work</p>
+        <h2>Built by people who’ve shipped commerce before.</h2>
+        <div class="stat-row">
+          <div class="stat"><strong>9</strong><span>Apps shipped</span></div>
+          <div class="stat"><strong>2</strong><span>Continents</span></div>
+          <div class="stat"><strong>100%</strong><span>Late-stage chops</span></div>
+        </div>
+        <div class="row three" style="margin-top: 28px; flex: 1;">
+          <article class="card work-card">
+            <div class="tag">iOS + Web · DTC</div>
+            <h3>SOS Hydration</h3>
+            <p>Shopify storefront that changes with time of day — membership, perks, and a daily tracker built in.</p>
+          </article>
+          <article class="card work-card">
+            <div class="tag">Web · Leadership</div>
+            <h3>Be Unforgettable</h3>
+            <p>Member portal, progress system, and the editorial engine that publishes the brand’s point of view.</p>
+          </article>
+          <article class="card work-card">
+            <div class="tag">Web · Luxury real estate</div>
+            <h3>The Foundry</h3>
+            <p>Editorial site built to convert serious buyers — cinematic, conversion-first design.</p>
+          </article>
+        </div>
+        <div class="footer-bar">
+          <span>Proof</span>
+          <span>09</span>
+        </div>
+      </section>
+
+      <!-- 10 Investment -->
+      <section class="slide" data-title="Investment">
+        <p class="eyebrow">Investment</p>
+        <h2>Clear scope. Clear commercial frame.</h2>
+        <div class="row two" style="margin-top: 12px; flex: 1;">
+          <div class="price-block">
+            <div class="label">Phase 1 — Build</div>
+            <div class="amount">$30,000</div>
+            <p class="desc">Custom GRIME Shopify storefront + Amazon launched from scratch — Brand Store, listings, hero A+, core apps connected, launch QA.</p>
+          </div>
+          <div class="price-block" style="background: rgba(255,255,255,0.03); border-color: var(--line);">
+            <div class="label" style="color: var(--soft);">Phase 2 — Grow</div>
+            <div class="amount">$7,500<span style="font-size: 22px; font-weight: 600; color: var(--muted);"> / mo</span></div>
+            <p class="desc">Web maintenance, CRO, Amazon catalogue ops, and paid deployment across agreed platforms. Ad spend separate.</p>
+          </div>
+        </div>
+        <div class="footer-bar">
+          <span class="note">Target and app are separate scopes when the business is ready.</span>
+          <span>10</span>
+        </div>
+      </section>
+
+      <!-- 11 Close -->
+      <section class="slide" data-title="Close">
+        <p class="eyebrow">Next</p>
+        <h1 style="max-width: 14ch;">No generic template. No wasted handoffs.</h1>
+        <p class="lede" style="margin-top: 28px;">Build what GRIME needs now. One partner — from Shopify and Amazon through Target and the app when earned.</p>
+        <div class="cover-bottom" style="margin-top: auto;">
+          <div>
+            <div class="brand-lockup" style="margin-bottom: 10px;">Last Mile Studios</div>
+            <div style="font-size: 18px; color: var(--accent);">lastmilestudio.design</div>
+          </div>
+          <div style="text-align: right; color: var(--muted); font-size: 13px; line-height: 1.6;">
+            Let’s build it.<br />
+            <span style="color: var(--soft);">Commerce · Amazon · Growth</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="nav" id="nav">
+    <button type="button" id="prev" aria-label="Previous slide">Prev</button>
+    <div class="count" id="count">1 / 11</div>
+    <button type="button" id="next" aria-label="Next slide">Next</button>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const count = document.getElementById("count");
+    let i = 0;
+
+    function go(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides[i].scrollIntoView({ behavior: "smooth", block: "center" });
+      slides.forEach((s, idx) => s.classList.toggle("focus-mode", idx === i));
+      count.textContent = `${i + 1} / ${slides.length}`;
+    }
+
+    document.getElementById("prev").addEventListener("click", () => go(i - 1));
+    document.getElementById("next").addEventListener("click", () => go(i + 1));
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); go(i + 1); }
+      if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); go(i - 1); }
+      if (e.key === "Home") go(0);
+      if (e.key === "End") go(slides.length - 1);
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      i = slides.indexOf(visible.target);
+      count.textContent = `${i + 1} / ${slides.length}`;
+      slides.forEach((s, idx) => s.classList.toggle("focus-mode", idx === i));
+    }, { threshold: [0.55, 0.7] });
+    slides.forEach((s) => io.observe(s));
+    go(0);
+  </script>
+</body>
+</html>
