@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Brief — Monaco Day Trip | 10 July 2026</title>
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --muted: #4a5568;
+      --accent: #0f4c75;
+      --accent-light: #e8f4fc;
+      --border: #d1d9e0;
+      --bg: #ffffff;
+      --warn-bg: #fff8e6;
+      --warn-border: #e6c200;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.55;
+      color: var(--ink);
+      background: #f4f6f8;
+      padding: 2rem 1rem;
+    }
+
+    .document {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--bg);
+      box-shadow: 0 2px 24px rgba(0,0,0,.08);
+    }
+
+    /* Cover */
+    .cover {
+      background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 100%);
+      color: #fff;
+      padding: 3rem 2.5rem 2.5rem;
+    }
+
+    .cover-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+    }
+
+    .cover h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .cover-sub {
+      font-size: 1.05rem;
+      opacity: 0.92;
+      margin-bottom: 2rem;
+    }
+
+    .cover-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 2rem;
+      font-size: 0.88rem;
+      border-top: 1px solid rgba(255,255,255,.25);
+      padding-top: 1.5rem;
+    }
+
+    .cover-meta dt {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.75;
+      margin-bottom: 0.15rem;
+    }
+
+    .cover-meta dd { font-weight: 500; }
+
+    /* Body */
+    .body { padding: 2rem 2.5rem 2.5rem; }
+
+    section { margin-bottom: 2rem; }
+
+    h2 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 1.25rem 0 0.6rem;
+    }
+
+    p { margin-bottom: 0.75rem; color: var(--muted); }
+
+    p.lead {
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    tr:nth-child(even) td { background: #fafbfc; }
+
+    td strong { color: var(--ink); }
+
+    /* Summary box */
+    .summary-box {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+
+    /* Alert */
+    .alert {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+      font-size: 0.88rem;
+      color: #5c4a00;
+      margin: 1rem 0;
+    }
+
+    .alert strong { color: #3d3200; }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .checklist li {
+      padding: 0.35rem 0 0.35rem 1.5rem;
+      position: relative;
+      color: var(--muted);
+    }
+
+    .checklist li::before {
+      content: "☐";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Route steps */
+    .route {
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 0 0.75rem;
+      margin: 0.5rem 0;
+    }
+
+    .route-num {
+      width: 2rem;
+      height: 2rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .route-text { padding-top: 0.35rem; font-size: 0.9rem; }
+    .route-text strong { display: block; color: var(--ink); }
+    .route-text span { color: var(--muted); font-size: 0.85rem; }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+      margin-top: 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer ul { margin: 0.5rem 0 0 1.25rem; }
+    .footer li { margin-bottom: 0.25rem; }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .document { box-shadow: none; max-width: 100%; }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="document">
+    <header class="cover">
+      <div class="cover-label">Travel Brief</div>
+      <h1>Monaco Day Trip</h1>
+      <p class="cover-sub">Meeting Herculis EBS &mdash; Wanda Diamond League</p>
+      <dl class="cover-meta">
+        <div><dt>Date</dt><dd>Friday, 10 July 2026</dd></div>
+        <div><dt>Venue</dt><dd>Stade Louis II, Fontvieille</dd></div>
+        <div><dt>Origin</dt><dd>Nice, France</dd></div>
+        <div><dt>Stadium Entry</dt><dd>PORTE G &middot; Populaires G</dd></div>
+      </dl>
+    </header>
+
+    <main class="body">
+      <section>
+        <h2>1. Executive Summary</h2>
+        <p class="lead">Same-day itinerary from Nice to Monaco for the Meeting Herculis EBS athletics meeting. The plan prioritises a relaxed daytime pace, reliable public transport, and timely stadium entry via PORTE G.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Departure from Nice</td><td>After <strong>10:30</strong></td></tr>
+            <tr><td>First event</td><td><strong>18:15</strong></td></tr>
+            <tr><td>Final event</td><td><strong>22:00</strong></td></tr>
+            <tr><td>Stadium entry</td><td><strong>PORTE G</strong> (Stand: Populaires G)</td></tr>
+            <tr><td>Seating</td><td>Placement libre (unreserved)</td></tr>
+            <tr><td>Target return</td><td><strong>22:45&ndash;23:15</strong> (confirm on day)</td></tr>
+          </tbody>
+        </table>
+        <div class="summary-box">
+          <strong>Recommended approach:</strong> Depart Nice after 10:30; follow the walking route (Casino &rarr; Harbour &rarr; Old Town &rarr; Fontvieille); dine near the stadium; enter via PORTE G by 18:05; allow a short interval after the final event before returning to Nice by TER.
+        </div>
+        <div class="alert">
+          <strong>Important:</strong> Train times may change due to engineering works or event crowd control. Reconfirm all services on SNCF Connect <strong>24&ndash;48 hours</strong> before travel and again on the day.
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Day Itinerary</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Location</th>
+              <th>Activity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>10:30&ndash;11:00</strong></td><td>Nice-Ville station</td><td>Depart on direct TER to Monaco-Monte-Carlo</td></tr>
+            <tr><td><strong>11:15&ndash;11:45</strong></td><td>Monaco-Monte-Carlo</td><td>Arrive; walk towards Casino Square</td></tr>
+            <tr><td><strong>11:45&ndash;13:00</strong></td><td>Monte Carlo</td><td>Casino, gardens, photography, coffee</td></tr>
+            <tr><td><strong>13:00&ndash;14:00</strong></td><td>Port Hercules</td><td>Harbour and marina</td></tr>
+            <tr><td><strong>14:00&ndash;15:45</strong></td><td>Monaco-Ville</td><td>Palace, Cathedral, viewpoints, lunch</td></tr>
+            <tr><td><strong>15:45&ndash;17:00</strong></td><td>Harbour / Fontvieille</td><td>Walk towards stadium district</td></tr>
+            <tr><td><strong>17:00&ndash;17:45</strong></td><td>Fontvieille</td><td>Pre-event dinner (La Sali&egrave;re recommended)</td></tr>
+            <tr><td><strong>17:50&ndash;18:05</strong></td><td>Stade Louis II</td><td>Enter via <strong>PORTE G</strong></td></tr>
+            <tr><td><strong>18:15&ndash;22:00</strong></td><td>Stade Louis II</td><td>Meeting Herculis EBS</td></tr>
+            <tr><td><strong>22:00+</strong></td><td>Monaco &rarr; Nice</td><td>Optional refreshment; return by TER</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>3. Transport</h2>
+        <h3>3.1 Outbound &mdash; Nice to Monaco</h3>
+        <table>
+          <thead><tr><th>Mode</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td><strong>TER (recommended)</strong></td><td>Nice-Ville &rarr; Monaco-Monte-Carlo; ~22&ndash;25 minutes</td></tr>
+            <tr><td>Taxi</td><td>Possible; event traffic may cause delays. Train is simpler and more cost-effective.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>3.2 Walking Route</h3>
+        <div class="route"><div class="route-num">1</div><div class="route-text"><strong>Monaco-Monte-Carlo station</strong><span>Start point</span></div></div>
+        <div class="route"><div class="route-num">2</div><div class="route-text"><strong>Casino</strong><span>Photography, coffee</span></div></div>
+        <div class="route"><div class="route-num">3</div><div class="route-text"><strong>Port Hercules</strong><span>Harbour</span></div></div>
+        <div class="route"><div class="route-num">4</div><div class="route-text"><strong>Monaco-Ville</strong><span>Palace, Cathedral</span></div></div>
+        <div class="route"><div class="route-num">5</div><div class="route-text"><strong>Fontvieille</strong><span>Dining, stadium approach</span></div></div>
+        <div class="route"><div class="route-num">6</div><div class="route-text"><strong>PORTE G</strong><span>Stadium entry &mdash; Populaires G</span></div></div>
+        <p style="margin-top:0.75rem">Monaco-Monte-Carlo station to Stade Louis II: approximately <strong>20 minutes</strong> on foot. Allow additional time post-event.</p>
+      </section>
+
+      <section>
+        <h2>4. Dining &amp; Refreshments</h2>
+        <table>
+          <thead>
+            <tr><th>Occasion</th><th>Venue</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Lunch</td><td>Regina Elena, La Piazza, Bella Vita</td><td>Monaco-Ville; reservation recommended</td></tr>
+            <tr><td>Pre-event dinner</td><td><strong>La Sali&egrave;re</strong></td><td>Closest to stadium; book 17:00&ndash;17:15</td></tr>
+            <tr><td>Pre-gates drink</td><td>Brasserie de Monaco, Stars'N'Bars</td><td>Harbour-side</td></tr>
+            <tr><td>Post-event</td><td>La Rascasse</td><td>Allow 20&ndash;30 min before station</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>5. Stadium Access &mdash; PORTE G</h2>
+        <ul class="checklist">
+          <li>Use <strong>PORTE G</strong> only (as indicated on ticket)</li>
+          <li>Populaires G is unreserved &mdash; select seats upon entry</li>
+          <li>Arrive <strong>17:50&ndash;18:05</strong> for the 18:15 first event</li>
+          <li>Ensure tickets / QR codes are downloaded; device charged</li>
+          <li>Carry water; confirm current bottle policy</li>
+        </ul>
+        <p style="margin-top:0.75rem"><strong>Seating:</strong> Higher tiers offer clearer full-track views; lower tiers are closer to the track. For adjacent group seating, arrive well before the first event.</p>
+      </section>
+
+      <section>
+        <h2>6. Return Journey</h2>
+        <table>
+          <thead>
+            <tr><th>Option</th><th>Window</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Immediate</td><td>22:00&ndash;22:10</td><td>Fastest; highest congestion</td></tr>
+            <tr><td><strong>Recommended</strong></td><td>22:10&ndash;22:40</td><td>Brief refreshment; crowd dispersal</td></tr>
+            <tr><td>Extended</td><td>After 23:15</td><td>Only if later services confirmed</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Target window:</strong> 22:45&ndash;23:15. If station queues are heavy, wait in Fontvieille/harbour and monitor live departures.</p>
+      </section>
+
+      <section>
+        <h2>7. Pre-Departure Checklist</h2>
+        <table>
+          <thead><tr><th>Item</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Tickets / QR codes</td><td>Stadium entry</td></tr>
+            <tr><td>Portable charger</td><td>Maps, photography, tickets</td></tr>
+            <tr><td>Comfortable walking shoes</td><td>Hills, steps, extended walking</td></tr>
+            <tr><td>Water &amp; sun protection</td><td>Hydration; July heat</td></tr>
+            <tr><td>Light layer</td><td>Evening return</td></tr>
+            <tr><td>Passport / ID</td><td>General identification</td></tr>
+            <tr><td>Restaurant reservation</td><td>La Sali&egrave;re, 17:00&ndash;17:15 (optional)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>8. Key Locations</h2>
+        <table>
+          <thead><tr><th>Location</th><th>Address</th></tr></thead>
+          <tbody>
+            <tr><td>Nice-Ville station</td><td>Avenue Thiers, Nice</td></tr>
+            <tr><td>Monaco-Monte-Carlo station</td><td>Monaco</td></tr>
+            <tr><td>Stade Louis II</td><td>7 Avenue des Castelans, Fontvieille, Monaco</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer class="footer">
+        <p><strong>Disclaimer:</strong> Late-evening train services may vary due to seasonal timetables, engineering works, or event arrangements. Confirm all travel times on SNCF Connect on the day of travel. Ticket basis: Populaires G, Placement libre, PORTE G.</p>
+        <p style="margin-top:0.5rem">Document prepared: July 2026</p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
