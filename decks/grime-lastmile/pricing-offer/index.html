@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Last Mile Studios — GRIME Scope & Investment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0d0f;
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #f2f0ea;
+      --muted: #9a968c;
+      --soft: #c4bfb4;
+      --accent: #e8ff47;
+      --accent-dim: rgba(232, 255, 71, 0.14);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #050506; color: var(--text); font-family: "Instrument Sans", sans-serif; -webkit-font-smoothing: antialiased; }
+    .stage { min-height: 100vh; display: grid; place-items: center; padding: 48px 20px 80px; }
+    .slides { width: min(100%, 1280px); display: flex; flex-direction: column; gap: 24px; }
+    .slide {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background:
+        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(232, 255, 71, 0.07), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 0% 100%, rgba(255, 107, 74, 0.05), transparent 50%),
+        linear-gradient(160deg, #12141a 0%, var(--bg) 45%, #0a0b0d 100%);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      padding: 52px 60px;
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+      break-after: page;
+    }
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      pointer-events: none;
+    }
+    .slide > * { position: relative; z-index: 1; }
+    .eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    }
+    h1, h2 {
+      font-family: Syne, sans-serif; font-weight: 750;
+      letter-spacing: -0.03em; line-height: 0.95;
+    }
+    h1 { font-size: clamp(40px, 5.8vw, 72px); max-width: 12ch; }
+    h2 { font-size: clamp(32px, 4.2vw, 48px); max-width: 18ch; margin-bottom: 12px; }
+    .lede { font-size: 19px; line-height: 1.45; color: var(--soft); max-width: 40ch; }
+    .footer-bar {
+      margin-top: auto; padding-top: 22px; display: flex;
+      justify-content: space-between; align-items: end; gap: 20px;
+      border-top: 1px solid var(--line); font-size: 12px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+    }
+    .footer-bar .note { color: var(--soft); letter-spacing: 0.02em; text-transform: none; font-size: 13px; max-width: 55ch; line-height: 1.4; }
+    .row { display: grid; gap: 18px; }
+    .row.two { grid-template-columns: 1fr 1fr; }
+    .row.split { grid-template-columns: 0.9fr 1.1fr; flex: 1; align-items: stretch; margin-top: 8px; }
+    .card {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+      padding: 22px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .card h3 { font-family: Syne, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .list li {
+      position: relative; padding-left: 16px; color: var(--soft);
+      font-size: 15px; line-height: 1.4;
+    }
+    .list li::before {
+      content: ""; position: absolute; left: 0; top: 0.55em;
+      width: 6px; height: 6px; background: var(--accent);
+    }
+    .price {
+      font-family: Syne, sans-serif; font-size: 56px; font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1; color: var(--accent);
+    }
+    .price span { font-size: 22px; font-weight: 600; color: var(--muted); }
+    .price-box {
+      background: var(--accent-dim); border: 1px solid rgba(232,255,71,0.28);
+      padding: 28px; display: flex; flex-direction: column; gap: 10px; justify-content: center;
+    }
+    .label { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .brand { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); }
+    .brand span { color: var(--muted); }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
+      border: 1px solid var(--line); background: rgba(255,255,255,0.03);
+      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft);
+    }
+    .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+    .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .nav {
+      position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 30;
+      display: flex; gap: 8px; align-items: center; padding: 8px;
+      background: rgba(12,13,15,0.85); border: 1px solid var(--line); backdrop-filter: blur(10px);
+    }
+    .nav button {
+      appearance: none; border: 1px solid var(--line); background: transparent;
+      color: var(--text); padding: 8px 12px; font: inherit; font-size: 12px;
+      letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+    }
+    .nav .count { color: var(--muted); font-size: 12px; padding: 0 8px; min-width: 56px; text-align: center; }
+    @page { size: 13.333in 7.5in; margin: 0; }
+    @media print {
+      .nav { display: none !important; }
+      .stage { padding: 0; display: block; }
+      .slides { gap: 0; width: auto; }
+      .slide {
+        width: 13.333in; height: 7.5in; aspect-ratio: auto; border: none;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      .slide:last-child { break-after: auto; }
+    }
+    @media (max-width: 900px) {
+      .slide { aspect-ratio: auto; min-height: 620px; padding: 32px 24px; }
+      .row.two, .row.split { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="slides" id="slides">
+
+      <section class="slide">
+        <p class="eyebrow">Last Mile Studios × GRIME</p>
+        <h1>What we build. What we run.</h1>
+        <p class="lede" style="margin-top: 22px;">A clear commercial offer — Shopify and Amazon launched, then managed as one growth system.</p>
+        <div class="pills">
+          <span class="pill">Build · $30,000</span>
+          <span class="pill">Grow · $7,500 / mo</span>
+        </div>
+        <div class="footer-bar">
+          <div class="brand">Last Mile Studios <span>×</span> GRIME™</div>
+          <span>01</span>
+        </div>
+      </section>
+
+      <section class="slide">
+        <p class="eyebrow">Phase 1 — Build</p>
+        <div class="row split">
+          <div class="price-box">
+            <div class="label">One-time</div>
+            <div class="price">$30,000</div>
+            <p style="color: var(--soft); font-size: 15px; line-height: 1.45; max-width: 22ch;">Two live storefronts. One brand. Launch-ready.</p>
+          </div>
+          <div>
+            <h2>What $30k includes</h2>
+            <ul class="list" style="margin-top: 16px;">
+              <li>Custom GRIME Shopify storefront (Online Store 2.0) — homepage, collections, PDPs, core pages</li>
+              <li>Parent-first buying journey with modular sections for weekly drops</li>
+              <li>Subscriptions + reviews connected and styled on core templates (Recharge + reviews app)</li>
+              <li>Email / SMS connected; SEO basics, mobile QA, launch handoff</li>
+              <li>Amazon Brand Registry readiness, Brand Store, listings & variations for agreed ASINs</li>
+              <li>A+ / Brand Story for hero products + launch measurement baseline</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bar">
+          <span class="note">Creative, photography, UGC, and claims stay with GRIME. We build and ship the commerce.</span>
+          <span>02</span>
+        </div>
+      </section>
+
+      <section class="slide">
+        <p class="eyebrow">Phase 2 — Grow</p>
+        <div class="row split">
+          <div class="price-box" style="background: rgba(255,255,255,0.03); border-color: var(--line);">
+            <div class="label" style="color: var(--soft);">Monthly retainer</div>
+            <div class="price" style="color: var(--text);">$7,500<span> / mo</span></div>
+            <p style="color: var(--soft); font-size: 15px; line-height: 1.45; max-width: 24ch;">Maintain, convert, catalogue, and deploy paid. Ad spend separate.</p>
+          </div>
+          <div>
+            <h2>What $7,500 / mo includes</h2>
+            <ul class="list" style="margin-top: 16px;">
+              <li><strong style="color: var(--text);">Shopify</strong> — maintenance, technical support, CRO, merchandising, launch/landing pages, reporting</li>
+              <li><strong style="color: var(--text);">Amazon</strong> — listing health, catalogue ops, search & conversion recommendations, content/promo updates</li>
+              <li><strong style="color: var(--text);">Paid growth</strong> — deploy & optimise Amazon Ads, Meta, and Google as agreed</li>
+              <li>One commercial view across Shopify + Amazon (not siloed channel reports)</li>
+              <li>GRIME owns creative; Last Mile deploys, tests, and learns against sales outcomes</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bar">
+          <span class="note">Target, app, and major new builds are separate scopes when you’re ready.</span>
+          <span>03</span>
+        </div>
+      </section>
+
+      <section class="slide">
+        <p class="eyebrow">At a glance</p>
+        <h2>Simple split.</h2>
+        <div class="row two" style="margin-top: 20px; flex: 1;">
+          <article class="card">
+            <div class="label">Build · $30,000</div>
+            <h3>Make it live</h3>
+            <ul class="list">
+              <li>Shopify storefront</li>
+              <li>Amazon store + listings</li>
+              <li>Core apps connected</li>
+              <li>Launch QA & handoff</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="label">Grow · $7,500 / mo</div>
+            <h3>Make it compound</h3>
+            <ul class="list">
+              <li>Site + Amazon ops</li>
+              <li>Conversion work</li>
+              <li>Paid media deployment</li>
+              <li>Monthly reporting</li>
+            </ul>
+          </article>
+        </div>
+        <div class="footer-bar">
+          <div>
+            <div class="brand" style="margin-bottom: 6px;">Last Mile Studios</div>
+            <div style="color: var(--accent); font-size: 16px; letter-spacing: 0;">lastmilestudio.design</div>
+          </div>
+          <span>04</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="nav">
+    <button type="button" id="prev">Prev</button>
+    <div class="count" id="count">1 / 4</div>
+    <button type="button" id="next">Next</button>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const count = document.getElementById("count");
+    let i = 0;
+    function go(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides[i].scrollIntoView({ behavior: "smooth", block: "center" });
+      count.textContent = `${i + 1} / ${slides.length}`;
+    }
+    document.getElementById("prev").onclick = () => go(i - 1);
+    document.getElementById("next").onclick = () => go(i + 1);
+    window.addEventListener("keydown", (e) => {
+      if (["ArrowRight", "PageDown", " "].includes(e.key)) { e.preventDefault(); go(i + 1); }
+      if (["ArrowLeft", "PageUp"].includes(e.key)) { e.preventDefault(); go(i - 1); }
+    });
+    go(0);
+  </script>
+</body>
+</html>
