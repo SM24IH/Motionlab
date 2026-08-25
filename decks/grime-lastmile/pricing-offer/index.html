@@ -73,6 +73,7 @@
       margin: -12px 0 16px;
     }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+    .grid.three { grid-template-columns: 1fr 1fr 1fr; }
     .box {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -111,6 +112,7 @@
       color: var(--mute);
       display: flex;
       justify-content: space-between;
+      gap: 16px;
     }
     .nav {
       position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%);
@@ -134,7 +136,7 @@
     }
     @media (max-width: 800px) {
       .slide { aspect-ratio: auto; min-height: 560px; padding: 28px; }
-      .grid { grid-template-columns: 1fr; }
+      .grid, .grid.three { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -148,7 +150,7 @@
           <span>Quote</span>
         </div>
         <h1>Scope & price</h1>
-        <p class="sub">Work for GRIME. 50% payment upfront required to start.</p>
+        <p class="sub">Work for GRIME. 50% payment upfront required to start. Client pays all ad media separately.</p>
         <div class="grid">
           <div class="box">
             <h3>Build · one-time</h3>
@@ -168,13 +170,14 @@
             <ul>
               <li>Shopify website maintenance</li>
               <li>Amazon maintenance</li>
-              <li>Amazon PPC (up to $5k ad spend)</li>
+              <li>Amazon PPC management (media ≤ $5k/mo)</li>
+              <li>Month 1: Meta + Google account setup</li>
               <li>Monthly reporting</li>
             </ul>
           </div>
         </div>
         <div class="foot">
-          <span>50% build payment upfront required. Google &amp; Meta ads quoted separately. Amazon spend above $5k/mo billed separately. Unused hours do not roll over.</span>
+          <span>Media always paid by client. Amazon spend over $5k/mo = +10% of Amazon ad spend. Email campaigns, flows &amp; ongoing Meta/Google management are extra.</span>
           <span>1 / 4</span>
         </div>
       </section>
@@ -193,8 +196,8 @@
               <li>Custom OS 2.0 storefront for GRIME</li>
               <li>Home, collections, PDPs, core pages</li>
               <li>Drop-ready modular homepage sections</li>
-              <li>Recharge + reviews installed & styled</li>
-              <li>Email/SMS connected</li>
+              <li>Recharge + reviews installed &amp; styled</li>
+              <li>Email/SMS platform connected only</li>
               <li>SEO basics, mobile QA, admin handoff</li>
             </ul>
           </div>
@@ -211,7 +214,7 @@
           </div>
         </div>
         <div class="foot">
-          <span>50% upfront required. Out: Target, app, creative production, ongoing ads.</span>
+          <span>Email campaigns, automations/flows, and creative production are not included in the build.</span>
           <span>2 / 4</span>
         </div>
       </section>
@@ -222,30 +225,31 @@
           <span>$8,000 / mo · 25 hrs</span>
         </div>
         <h2>Retainer — $8,000 / month</h2>
-        <p class="sub">25 development hours included each month. Additional hours billed separately.</p>
+        <p class="sub">25 hours included. Client pays all ad media. Management only below.</p>
         <div class="grid">
           <div class="box">
-            <h3>Website maintenance</h3>
+            <h3>Website + Amazon ops</h3>
             <ul>
               <li>Shopify technical support &amp; updates</li>
               <li>Bug fixes and platform maintenance</li>
               <li>Minor merchandising / content updates</li>
-              <li>App health checks</li>
+              <li>Amazon listing health &amp; catalogue updates</li>
+              <li>Monthly performance reporting</li>
             </ul>
           </div>
           <div class="box">
-            <h3>Amazon maintenance + PPC</h3>
+            <h3>Paid — management only</h3>
             <ul>
-              <li>Listing health &amp; catalogue updates</li>
-              <li>Content and merchandising updates</li>
-              <li>Amazon PPC management</li>
-              <li>Up to $5,000/mo Amazon ad spend included in scope</li>
-              <li>Monthly performance reporting</li>
+              <li>Amazon PPC management while spend ≤ $5,000/mo</li>
+              <li>Media always billed to / paid by client</li>
+              <li>Amazon spend over $5k/mo: +10% of Amazon ad spend</li>
+              <li>Month 1 only: Meta + Google account setup</li>
+              <li>Ongoing Meta / Google management = separate</li>
             </ul>
           </div>
         </div>
         <div class="foot">
-          <span>Amazon spend above $5k/mo = separate fee or tier. Major new builds = separate quote.</span>
+          <span>Above $5k/mo Amazon spend: +10% of Amazon ad spend as management fee (e.g. $80k spend → $8,000). Major new builds = separate quote.</span>
           <span>3 / 4</span>
         </div>
       </section>
@@ -253,32 +257,41 @@
       <section class="slide">
         <div class="meta">
           <span>Last Mile Studios × GRIME</span>
-          <span>Separate quote</span>
+          <span>Extra / not included</span>
         </div>
-        <h2>Not included in retainer</h2>
-        <p class="sub">Quoted separately if required.</p>
-        <div class="grid">
+        <h2>Quoted separately</h2>
+        <p class="sub">Not in the $40k build or $8k retainer unless agreed in writing.</p>
+        <div class="grid three">
           <div class="box out">
-            <h3>Google Ads</h3>
+            <h3>Email marketing</h3>
             <ul>
-              <li>Account setup &amp; structure</li>
-              <li>Campaign build &amp; optimisation</li>
-              <li>Reporting</li>
-              <li>Media spend billed by client</li>
+              <li>Campaigns &amp; sends</li>
+              <li>List growth / strategy</li>
+              <li>Creative &amp; copy</li>
+              <li>Platform fees by client</li>
             </ul>
           </div>
           <div class="box out">
-            <h3>Meta Ads</h3>
+            <h3>Flows / automations</h3>
             <ul>
-              <li>Account setup &amp; structure</li>
-              <li>Campaign build &amp; optimisation</li>
-              <li>Reporting</li>
-              <li>Media spend billed by client</li>
+              <li>Welcome, abandon cart, post-purchase</li>
+              <li>SMS journeys</li>
+              <li>Flow builds &amp; optimisation</li>
+              <li>Klaviyo (or equiv.) programme</li>
+            </ul>
+          </div>
+          <div class="box out">
+            <h3>Ongoing Meta + Google</h3>
+            <ul>
+              <li>Month 1 setup is in retainer</li>
+              <li>Ongoing management quoted separate</li>
+              <li>Typically 10–15% of spend or flat fee</li>
+              <li>Media paid by client</li>
             </ul>
           </div>
         </div>
         <div class="foot">
-          <span>Creative supplied by GRIME / Last Mile.</span>
+          <span>Creative supplied by GRIME / Last Mile. Major new builds / new channels = separate quote.</span>
           <span>4 / 4</span>
         </div>
       </section>
