@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Last Mile Studios — GRIME Quote</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --ink: #111;
+      --mute: #555;
+      --line: #d8d5ce;
+      --panel: #fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #eae7e1;
+      color: var(--ink);
+      font-family: "IBM Plex Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .stage { min-height: 100vh; display: grid; place-items: center; padding: 32px 16px 72px; }
+    .slides { width: min(100%, 1100px); display: flex; flex-direction: column; gap: 20px; }
+    .slide {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+    }
+    .meta {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    h1 {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .sub { color: var(--mute); font-size: 16px; margin-bottom: 28px; }
+    .price {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 36px;
+      font-weight: 600;
+      margin: 0 0 20px;
+    }
+    .hours {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin: -12px 0 16px;
+    }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+    .grid.three { grid-template-columns: 1fr 1fr 1fr; }
+    .box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 22px 24px;
+    }
+    .box.out {
+      background: #f0eeea;
+      border-style: dashed;
+    }
+    .box h3 {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 14px;
+    }
+    ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    li {
+      font-size: 15px;
+      line-height: 1.35;
+      padding-left: 14px;
+      position: relative;
+    }
+    li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--mute);
+    }
+    .foot {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--mute);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav {
+      position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%);
+      display: flex; gap: 8px; align-items: center; padding: 8px;
+      background: #111; color: #fff; font-size: 12px;
+    }
+    .nav button {
+      appearance: none; border: 1px solid #444; background: transparent;
+      color: #fff; padding: 6px 10px; font: inherit; cursor: pointer;
+    }
+    @page { size: 13.333in 7.5in; margin: 0; }
+    @media print {
+      .nav { display: none !important; }
+      body { background: white; }
+      .stage { padding: 0; display: block; }
+      .slides { gap: 0; width: auto; }
+      .slide {
+        width: 13.333in; height: 7.5in; aspect-ratio: auto; border: none;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+    }
+    @media (max-width: 800px) {
+      .slide { aspect-ratio: auto; min-height: 560px; padding: 28px; }
+      .grid, .grid.three { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="slides">
+
+      <section class="slide">
+        <div class="meta">
+          <span>Last Mile Studios × GRIME</span>
+          <span>Quote</span>
+        </div>
+        <h1>Scope & price</h1>
+        <p class="sub">Work for GRIME. 50% payment upfront required to start. Client pays all ad media separately.</p>
+        <div class="grid">
+          <div class="box">
+            <h3>Build · one-time</h3>
+            <div class="price">$40,000</div>
+            <ul>
+              <li>Custom Shopify storefront</li>
+              <li>Amazon launch (store + listings + A+)</li>
+              <li>Core apps connected (subs + reviews)</li>
+              <li>Launch QA + handoff</li>
+              <li>50% ($20,000) due upfront</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Retainer · monthly</h3>
+            <div class="price">$8,000<span style="font-size:18px;color:#555"> / mo</span></div>
+            <p class="hours">25 development hours included / month</p>
+            <ul>
+              <li>Shopify website maintenance</li>
+              <li>Amazon maintenance</li>
+              <li>Amazon PPC management (media ≤ $5k/mo)</li>
+              <li>Month 1: Meta + Google account setup</li>
+              <li>Monthly reporting</li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot">
+          <span>Media always paid by client. Amazon spend over $5k/mo = +10% of Amazon ad spend. Email campaigns, flows &amp; ongoing Meta/Google management are extra.</span>
+          <span>1 / 4</span>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="meta">
+          <span>Last Mile Studios × GRIME</span>
+          <span>$40,000</span>
+        </div>
+        <h2>Build — $40,000</h2>
+        <p class="sub">Deliverables for the project fee. 50% ($20,000) due upfront; balance on launch.</p>
+        <div class="grid">
+          <div class="box">
+            <h3>Shopify</h3>
+            <ul>
+              <li>Custom OS 2.0 storefront for GRIME</li>
+              <li>Home, collections, PDPs, core pages</li>
+              <li>Drop-ready modular homepage sections</li>
+              <li>Recharge + reviews installed &amp; styled</li>
+              <li>Email/SMS platform connected only</li>
+              <li>SEO basics, mobile QA, admin handoff</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Amazon</h3>
+            <ul>
+              <li>Brand Registry / account readiness</li>
+              <li>Brand Store build</li>
+              <li>Listings + variations for agreed ASINs</li>
+              <li>Titles, bullets, search terms</li>
+              <li>A+ / Brand Story for hero ASINs</li>
+              <li>Launch setup + measurement baseline</li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot">
+          <span>Email campaigns, automations/flows, and creative production are not included in the build.</span>
+          <span>2 / 4</span>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="meta">
+          <span>Last Mile Studios × GRIME</span>
+          <span>$8,000 / mo · 25 hrs</span>
+        </div>
+        <h2>Retainer — $8,000 / month</h2>
+        <p class="sub">25 hours included. Client pays all ad media. Management only below.</p>
+        <div class="grid">
+          <div class="box">
+            <h3>Website + Amazon ops</h3>
+            <ul>
+              <li>Shopify technical support &amp; updates</li>
+              <li>Bug fixes and platform maintenance</li>
+              <li>Minor merchandising / content updates</li>
+              <li>Amazon listing health &amp; catalogue updates</li>
+              <li>Monthly performance reporting</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Paid — management only</h3>
+            <ul>
+              <li>Amazon PPC management while spend ≤ $5,000/mo</li>
+              <li>Media always billed to / paid by client</li>
+              <li>Amazon spend over $5k/mo: +10% of Amazon ad spend</li>
+              <li>Month 1 only: Meta + Google account setup</li>
+              <li>Ongoing Meta / Google management = separate</li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot">
+          <span>Above $5k/mo Amazon spend: +10% of Amazon ad spend as management fee (e.g. $80k spend → $8,000). Major new builds = separate quote.</span>
+          <span>3 / 4</span>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="meta">
+          <span>Last Mile Studios × GRIME</span>
+          <span>Extra / not included</span>
+        </div>
+        <h2>Quoted separately</h2>
+        <p class="sub">Not in the $40k build or $8k retainer unless agreed in writing.</p>
+        <div class="grid three">
+          <div class="box out">
+            <h3>Email marketing</h3>
+            <ul>
+              <li>Campaigns &amp; sends</li>
+              <li>List growth / strategy</li>
+              <li>Creative &amp; copy</li>
+              <li>Platform fees by client</li>
+            </ul>
+          </div>
+          <div class="box out">
+            <h3>Flows / automations</h3>
+            <ul>
+              <li>Welcome, abandon cart, post-purchase</li>
+              <li>SMS journeys</li>
+              <li>Flow builds &amp; optimisation</li>
+              <li>Klaviyo (or equiv.) programme</li>
+            </ul>
+          </div>
+          <div class="box out">
+            <h3>Ongoing Meta + Google</h3>
+            <ul>
+              <li>Month 1 setup is in retainer</li>
+              <li>Ongoing management quoted separate</li>
+              <li>Typically 10–15% of spend or flat fee</li>
+              <li>Media paid by client</li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot">
+          <span>Creative supplied by GRIME / Last Mile. Major new builds / new channels = separate quote.</span>
+          <span>4 / 4</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="nav">
+    <button type="button" id="prev">Prev</button>
+    <span id="count">1 / 4</span>
+    <button type="button" id="next">Next</button>
+  </div>
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    let i = 0;
+    const go = n => { i = Math.max(0, Math.min(slides.length - 1, n)); slides[i].scrollIntoView({ behavior: "smooth", block: "center" }); document.getElementById("count").textContent = `${i + 1} / ${slides.length}`; };
+    document.getElementById("prev").onclick = () => go(i - 1);
+    document.getElementById("next").onclick = () => go(i + 1);
+    window.onkeydown = e => { if (["ArrowRight","PageDown"," "].includes(e.key)) { e.preventDefault(); go(i + 1); } if (["ArrowLeft","PageUp"].includes(e.key)) { e.preventDefault(); go(i - 1); } };
+    go(0);
+  </script>
+</body>
+</html>
